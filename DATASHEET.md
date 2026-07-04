@@ -1,10 +1,10 @@
 # Datasheet — BroScienceBench v1.1
 
-Following *Datasheets for Datasets* (Gebru et al., 2021). Fill the `[TODO]` spots before release.
+Following *Datasheets for Datasets* (Gebru et al., 2021). 
 
 ## Motivation
 - **Why created:** to evaluate whether LLMs give evidence-based vs. "bro-science" (myth) advice on strength training — a domain where the failure mode is *confident misinformation*, and where no public benchmark existed.
-- **Created by:** [TODO: your name], for the BroScienceBench benchmark. Not yet funded/affiliated. [TODO confirm]
+- **Created by:** Puranjay Haldankar, for the BroScienceBench benchmark. Not yet funded/affiliated. 
 
 ## Composition
 - **Instances:** 246 multiple-choice items across 42 myth clusters and 7 categories (mechanism, practice, body composition, nutrition, safety, recovery, calibration).
@@ -22,10 +22,10 @@ Following *Datasheets for Datasets* (Gebru et al., 2021). Fill the `[TODO]` spot
 - **Out of scope:** not medical advice; not a substitute for a qualified coach/clinician; English-only; strength-training only.
 
 ## Distribution
-- Released on [TODO: GitHub + HuggingFace]. License: [TODO — e.g. CC BY 4.0]. Eval code released alongside (`runBench_paper2.ts`).
+- Released on Github: 4th July 2026. License: Eval code released alongside (`runBench_paper2.ts`).
 
 ## Maintenance
-- Maintained by [TODO]. Versioned (v1.0 = 150 items, v1.1 = 246). Errata/corrections via [TODO: repo issues].
+- Maintained by Puranjay Haldankar. Versioned (v1.0 = 150 items, v1.1 = 246). 
 
 ## Limitations (state these plainly in the paper)
 - Single domain, English-only, MCQ format (open-ended mode mitigates artificiality but adds judge dependence).
