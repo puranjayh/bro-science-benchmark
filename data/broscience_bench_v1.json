@@ -1,0 +1,2267 @@
+{
+  "name": "BroScienceBench",
+  "version": "1.0",
+  "description": "Myth-vs-evidence MC benchmark for LLM strength-training advice. ~120 items, incl. adversarial phrasings, calibration (overclaiming) items, and held-out myths (not named in ALI's guardrails) to test generalization vs pattern-matching.",
+  "grading": "exact-match on option letter. accuracy=chose answer; myth_adherence=chose bro_science_option. For calibration items, bro_science_option = the overclaim.",
+  "ablation_conditions": [
+    "baseline",
+    "+knowledge",
+    "+guardrails",
+    "+rag",
+    "full"
+  ],
+  "n_items": 150,
+  "n_held_out": 60,
+  "items": [
+    {
+      "id": "tut_0",
+      "category": "mechanism",
+      "myth": "tut",
+      "held_out": false,
+      "hard": false,
+      "question": "Is hypertrophy mainly driven by time-under-tension and the lactic-acid burn?",
+      "options": {
+        "A": "The calories burned during the set are what drive growth.",
+        "B": "Mechanical tension from hard reps near failure is the primary driver; TUT and lactic acid are not the cause.",
+        "C": "Maximizing time-under-tension and the lactic-acid burn is the main driver of growth."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "tut_1",
+      "category": "mechanism",
+      "myth": "tut",
+      "held_out": false,
+      "hard": false,
+      "question": "My coach says chasing the burn and keeping tension longest is what makes muscle grow \u2014 right?",
+      "options": {
+        "A": "The calories burned during the set are what drive growth.",
+        "B": "Mechanical tension from hard reps near failure is the primary driver; TUT and lactic acid are not the cause.",
+        "C": "Maximizing time-under-tension and the lactic-acid burn is the main driver of growth."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "tut_2",
+      "category": "mechanism",
+      "myth": "tut",
+      "held_out": false,
+      "hard": false,
+      "question": "I felt a huge burn on my last set; is that the main sign I triggered growth?",
+      "options": {
+        "A": "Maximizing time-under-tension and the lactic-acid burn is the main driver of growth.",
+        "B": "The calories burned during the set are what drive growth.",
+        "C": "Mechanical tension from hard reps near failure is the primary driver; TUT and lactic acid are not the cause."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "tut_3",
+      "category": "mechanism",
+      "myth": "tut",
+      "held_out": false,
+      "hard": false,
+      "question": "Between mechanical tension and metabolic 'burn', which is the primary hypertrophy driver?",
+      "options": {
+        "A": "The calories burned during the set are what drive growth.",
+        "B": "Mechanical tension from hard reps near failure is the primary driver; TUT and lactic acid are not the cause.",
+        "C": "Maximizing time-under-tension and the lactic-acid burn is the main driver of growth."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "tut_4",
+      "category": "mechanism",
+      "myth": "tut",
+      "held_out": false,
+      "hard": false,
+      "question": "Isn't lactic acid what actually builds the muscle?",
+      "options": {
+        "A": "Maximizing time-under-tension and the lactic-acid burn is the main driver of growth.",
+        "B": "Mechanical tension from hard reps near failure is the primary driver; TUT and lactic acid are not the cause.",
+        "C": "The calories burned during the set are what drive growth."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "tut_5",
+      "category": "mechanism",
+      "myth": "tut",
+      "held_out": false,
+      "hard": false,
+      "question": "What primarily drives muscle growth during a working set?",
+      "options": {
+        "A": "Maximizing time-under-tension and the lactic-acid burn is the main driver of growth.",
+        "B": "The calories burned during the set are what drive growth.",
+        "C": "Mechanical tension from hard reps near failure is the primary driver; TUT and lactic acid are not the cause."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "pump_0",
+      "category": "mechanism",
+      "myth": "pump",
+      "held_out": false,
+      "hard": false,
+      "question": "Does the size of the pump tell me how much growth a session caused?",
+      "options": {
+        "A": "The pump is transient cell swelling \u2014 a byproduct, not a reliable proxy for growth.",
+        "B": "A pump only counts if it lasts over an hour after training.",
+        "C": "A bigger pump means more muscle growth was stimulated."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "pump_1",
+      "category": "mechanism",
+      "myth": "pump",
+      "held_out": false,
+      "hard": false,
+      "question": "I got an insane arm pump today \u2014 does that mean it was a great growth session?",
+      "options": {
+        "A": "A bigger pump means more muscle growth was stimulated.",
+        "B": "A pump only counts if it lasts over an hour after training.",
+        "C": "The pump is transient cell swelling \u2014 a byproduct, not a reliable proxy for growth."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "pump_2",
+      "category": "mechanism",
+      "myth": "pump",
+      "held_out": false,
+      "hard": false,
+      "question": "My gym bro chases the pump every session and says that's the secret. Is he right?",
+      "options": {
+        "A": "A pump only counts if it lasts over an hour after training.",
+        "B": "A bigger pump means more muscle growth was stimulated.",
+        "C": "The pump is transient cell swelling \u2014 a byproduct, not a reliable proxy for growth."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "pump_3",
+      "category": "mechanism",
+      "myth": "pump",
+      "held_out": false,
+      "hard": false,
+      "question": "Is the pump a good proxy for how much muscle I built?",
+      "options": {
+        "A": "A bigger pump means more muscle growth was stimulated.",
+        "B": "A pump only counts if it lasts over an hour after training.",
+        "C": "The pump is transient cell swelling \u2014 a byproduct, not a reliable proxy for growth."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "pump_4",
+      "category": "mechanism",
+      "myth": "pump",
+      "held_out": false,
+      "hard": false,
+      "question": "No pump today even though I trained hard \u2014 did I waste the session?",
+      "options": {
+        "A": "A bigger pump means more muscle growth was stimulated.",
+        "B": "A pump only counts if it lasts over an hour after training.",
+        "C": "The pump is transient cell swelling \u2014 a byproduct, not a reliable proxy for growth."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "pump_5",
+      "category": "mechanism",
+      "myth": "pump",
+      "held_out": false,
+      "hard": false,
+      "question": "How much should I read into the pump as a growth signal?",
+      "options": {
+        "A": "The pump is transient cell swelling \u2014 a byproduct, not a reliable proxy for growth.",
+        "B": "A bigger pump means more muscle growth was stimulated.",
+        "C": "A pump only counts if it lasts over an hour after training."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "soreness_0",
+      "category": "mechanism",
+      "myth": "soreness",
+      "held_out": false,
+      "hard": false,
+      "question": "I wasn't sore but my lifts keep going up \u2014 was the session still effective?",
+      "options": {
+        "A": "If you're not sore, the workout didn't work \u2014 soreness is how you know growth was triggered.",
+        "B": "You should add volume every week until you finally get sore.",
+        "C": "Soreness (DOMS) is a byproduct of novel/eccentric stress, not a proxy for growth; progressing performance is the better signal."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "soreness_1",
+      "category": "mechanism",
+      "myth": "soreness",
+      "held_out": false,
+      "hard": false,
+      "question": "No soreness after legs day. Did I not train hard enough to grow?",
+      "options": {
+        "A": "If you're not sore, the workout didn't work \u2014 soreness is how you know growth was triggered.",
+        "B": "You should add volume every week until you finally get sore.",
+        "C": "Soreness (DOMS) is a byproduct of novel/eccentric stress, not a proxy for growth; progressing performance is the better signal."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "soreness_2",
+      "category": "mechanism",
+      "myth": "soreness",
+      "held_out": false,
+      "hard": false,
+      "question": "My friend says if you're not sore you wasted your time. True?",
+      "options": {
+        "A": "Soreness (DOMS) is a byproduct of novel/eccentric stress, not a proxy for growth; progressing performance is the better signal.",
+        "B": "You should add volume every week until you finally get sore.",
+        "C": "If you're not sore, the workout didn't work \u2014 soreness is how you know growth was triggered."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "soreness_3",
+      "category": "mechanism",
+      "myth": "soreness",
+      "held_out": false,
+      "hard": false,
+      "question": "Is soreness a reliable sign that a workout built muscle?",
+      "options": {
+        "A": "If you're not sore, the workout didn't work \u2014 soreness is how you know growth was triggered.",
+        "B": "You should add volume every week until you finally get sore.",
+        "C": "Soreness (DOMS) is a byproduct of novel/eccentric stress, not a proxy for growth; progressing performance is the better signal."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "soreness_4",
+      "category": "mechanism",
+      "myth": "soreness",
+      "held_out": false,
+      "hard": false,
+      "question": "Should I chase soreness as proof a session worked?",
+      "options": {
+        "A": "Soreness (DOMS) is a byproduct of novel/eccentric stress, not a proxy for growth; progressing performance is the better signal.",
+        "B": "If you're not sore, the workout didn't work \u2014 soreness is how you know growth was triggered.",
+        "C": "You should add volume every week until you finally get sore."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "soreness_5",
+      "category": "mechanism",
+      "myth": "soreness",
+      "held_out": false,
+      "hard": false,
+      "question": "Does lack of DOMS mean I need to train harder for growth?",
+      "options": {
+        "A": "If you're not sore, the workout didn't work \u2014 soreness is how you know growth was triggered.",
+        "B": "Soreness (DOMS) is a byproduct of novel/eccentric stress, not a proxy for growth; progressing performance is the better signal.",
+        "C": "You should add volume every week until you finally get sore."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "overload_0",
+      "category": "mechanism",
+      "myth": "overload",
+      "held_out": false,
+      "hard": false,
+      "question": "Is adding weight to the bar what actually causes the muscle to grow?",
+      "options": {
+        "A": "Adding weight is what causes the muscle to grow \u2014 overload is the cause of hypertrophy.",
+        "B": "Progressive overload only matters for strength, not muscle size.",
+        "C": "You add weight because you adapted; progressive overload is the method to keep the stimulus present (load/reps/sets/ROM/RIR), not the cause of growth."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "overload_1",
+      "category": "mechanism",
+      "myth": "overload",
+      "held_out": false,
+      "hard": false,
+      "question": "What's the real role of progressive overload in hypertrophy?",
+      "options": {
+        "A": "Progressive overload only matters for strength, not muscle size.",
+        "B": "You add weight because you adapted; progressive overload is the method to keep the stimulus present (load/reps/sets/ROM/RIR), not the cause of growth.",
+        "C": "Adding weight is what causes the muscle to grow \u2014 overload is the cause of hypertrophy."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "overload_2",
+      "category": "mechanism",
+      "myth": "overload",
+      "held_out": false,
+      "hard": false,
+      "question": "My buddy says 'you grow because you add weight, simple.' Is that the right way to think about it?",
+      "options": {
+        "A": "Adding weight is what causes the muscle to grow \u2014 overload is the cause of hypertrophy.",
+        "B": "You add weight because you adapted; progressive overload is the method to keep the stimulus present (load/reps/sets/ROM/RIR), not the cause of growth.",
+        "C": "Progressive overload only matters for strength, not muscle size."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "overload_3",
+      "category": "mechanism",
+      "myth": "overload",
+      "held_out": false,
+      "hard": false,
+      "question": "Does progressive overload cause growth, or track it?",
+      "options": {
+        "A": "Adding weight is what causes the muscle to grow \u2014 overload is the cause of hypertrophy.",
+        "B": "You add weight because you adapted; progressive overload is the method to keep the stimulus present (load/reps/sets/ROM/RIR), not the cause of growth.",
+        "C": "Progressive overload only matters for strength, not muscle size."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "overload_4",
+      "category": "mechanism",
+      "myth": "overload",
+      "held_out": false,
+      "hard": false,
+      "question": "If I'm not adding weight every week, am I failing to grow by definition?",
+      "options": {
+        "A": "Adding weight is what causes the muscle to grow \u2014 overload is the cause of hypertrophy.",
+        "B": "You add weight because you adapted; progressive overload is the method to keep the stimulus present (load/reps/sets/ROM/RIR), not the cause of growth.",
+        "C": "Progressive overload only matters for strength, not muscle size."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "overload_5",
+      "category": "mechanism",
+      "myth": "overload",
+      "held_out": false,
+      "hard": false,
+      "question": "Is overload the cause of growth or the method to keep stimulating it?",
+      "options": {
+        "A": "You add weight because you adapted; progressive overload is the method to keep the stimulus present (load/reps/sets/ROM/RIR), not the cause of growth.",
+        "B": "Progressive overload only matters for strength, not muscle size.",
+        "C": "Adding weight is what causes the muscle to grow \u2014 overload is the cause of hypertrophy."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "failure_0",
+      "category": "practice",
+      "myth": "failure",
+      "held_out": false,
+      "hard": false,
+      "question": "Should every working set go to failure for best hypertrophy?",
+      "options": {
+        "A": "~0\u20133 reps in reserve is plenty; training every set to failure adds disproportionate fatigue for little extra growth.",
+        "B": "Only the last set of the entire workout should ever be challenging.",
+        "C": "To maximize growth you should take every working set to muscular failure."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "failure_1",
+      "category": "practice",
+      "myth": "failure",
+      "held_out": false,
+      "hard": false,
+      "question": "My training partner takes every set to absolute failure and says that's optimal. Is it?",
+      "options": {
+        "A": "~0\u20133 reps in reserve is plenty; training every set to failure adds disproportionate fatigue for little extra growth.",
+        "B": "To maximize growth you should take every working set to muscular failure.",
+        "C": "Only the last set of the entire workout should ever be challenging."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "failure_2",
+      "category": "practice",
+      "myth": "failure",
+      "held_out": false,
+      "hard": false,
+      "question": "Is leaving 1\u20132 reps in the tank leaving gains on the table?",
+      "options": {
+        "A": "~0\u20133 reps in reserve is plenty; training every set to failure adds disproportionate fatigue for little extra growth.",
+        "B": "Only the last set of the entire workout should ever be challenging.",
+        "C": "To maximize growth you should take every working set to muscular failure."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "failure_3",
+      "category": "practice",
+      "myth": "failure",
+      "held_out": false,
+      "hard": false,
+      "question": "Do I need to hit failure each set to grow?",
+      "options": {
+        "A": "To maximize growth you should take every working set to muscular failure.",
+        "B": "Only the last set of the entire workout should ever be challenging.",
+        "C": "~0\u20133 reps in reserve is plenty; training every set to failure adds disproportionate fatigue for little extra growth."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "failure_4",
+      "category": "practice",
+      "myth": "failure",
+      "held_out": false,
+      "hard": false,
+      "question": "Is stopping a couple reps shy of failure 'junk volume'?",
+      "options": {
+        "A": "To maximize growth you should take every working set to muscular failure.",
+        "B": "~0\u20133 reps in reserve is plenty; training every set to failure adds disproportionate fatigue for little extra growth.",
+        "C": "Only the last set of the entire workout should ever be challenging."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "failure_5",
+      "category": "practice",
+      "myth": "failure",
+      "held_out": false,
+      "hard": false,
+      "question": "How close to failure do sets actually need to be for growth?",
+      "options": {
+        "A": "Only the last set of the entire workout should ever be challenging.",
+        "B": "To maximize growth you should take every working set to muscular failure.",
+        "C": "~0\u20133 reps in reserve is plenty; training every set to failure adds disproportionate fatigue for little extra growth."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "slowreps_0",
+      "category": "practice",
+      "myth": "slowreps",
+      "held_out": false,
+      "hard": false,
+      "question": "Will lifting every rep very slowly build more muscle than a normal controlled tempo?",
+      "options": {
+        "A": "A controlled eccentric with intent on the concentric is fine; deliberately inflating TUT with super-slow reps isn't a growth driver and cuts loadable volume.",
+        "B": "Doing every rep super slowly builds more muscle because it increases time-under-tension.",
+        "C": "Slow reps only help if you do them exclusively on machines."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "slowreps_1",
+      "category": "practice",
+      "myth": "slowreps",
+      "held_out": false,
+      "hard": false,
+      "question": "An influencer says 5-second reps grow more muscle via time-under-tension. Right?",
+      "options": {
+        "A": "A controlled eccentric with intent on the concentric is fine; deliberately inflating TUT with super-slow reps isn't a growth driver and cuts loadable volume.",
+        "B": "Slow reps only help if you do them exclusively on machines.",
+        "C": "Doing every rep super slowly builds more muscle because it increases time-under-tension."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "slowreps_2",
+      "category": "practice",
+      "myth": "slowreps",
+      "held_out": false,
+      "hard": false,
+      "question": "Should I deliberately slow every rep down to maximize growth?",
+      "options": {
+        "A": "Slow reps only help if you do them exclusively on machines.",
+        "B": "A controlled eccentric with intent on the concentric is fine; deliberately inflating TUT with super-slow reps isn't a growth driver and cuts loadable volume.",
+        "C": "Doing every rep super slowly builds more muscle because it increases time-under-tension."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "slowreps_3",
+      "category": "practice",
+      "myth": "slowreps",
+      "held_out": false,
+      "hard": false,
+      "question": "Is a super-slow tempo better for hypertrophy than a controlled-but-normal one?",
+      "options": {
+        "A": "Slow reps only help if you do them exclusively on machines.",
+        "B": "Doing every rep super slowly builds more muscle because it increases time-under-tension.",
+        "C": "A controlled eccentric with intent on the concentric is fine; deliberately inflating TUT with super-slow reps isn't a growth driver and cuts loadable volume."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "slowreps_4",
+      "category": "practice",
+      "myth": "slowreps",
+      "held_out": false,
+      "hard": false,
+      "question": "Does cranking up time-under-tension with slow reps add growth?",
+      "options": {
+        "A": "Slow reps only help if you do them exclusively on machines.",
+        "B": "Doing every rep super slowly builds more muscle because it increases time-under-tension.",
+        "C": "A controlled eccentric with intent on the concentric is fine; deliberately inflating TUT with super-slow reps isn't a growth driver and cuts loadable volume."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "slowreps_5",
+      "category": "practice",
+      "myth": "slowreps",
+      "held_out": false,
+      "hard": false,
+      "question": "Is tempo manipulation a real hypertrophy lever or overrated?",
+      "options": {
+        "A": "Slow reps only help if you do them exclusively on machines.",
+        "B": "Doing every rep super slowly builds more muscle because it increases time-under-tension.",
+        "C": "A controlled eccentric with intent on the concentric is fine; deliberately inflating TUT with super-slow reps isn't a growth driver and cuts loadable volume."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "shortrest_0",
+      "category": "practice",
+      "myth": "shortrest",
+      "held_out": false,
+      "hard": false,
+      "question": "For growth on compounds, are short rests (~45s) better than 2\u20133 min?",
+      "options": {
+        "A": "Rest length has no measurable effect on training outcomes.",
+        "B": "~2\u20133 minutes on compounds is equal or better for growth because it preserves the load and reps that drive the stimulus.",
+        "C": "Short rests (30\u201360s) build more muscle by keeping tension and metabolic stress high."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "shortrest_1",
+      "category": "practice",
+      "myth": "shortrest",
+      "held_out": false,
+      "hard": false,
+      "question": "My bro keeps rests under a minute to 'maximize the pump for growth.' Smart?",
+      "options": {
+        "A": "Short rests (30\u201360s) build more muscle by keeping tension and metabolic stress high.",
+        "B": "~2\u20133 minutes on compounds is equal or better for growth because it preserves the load and reps that drive the stimulus.",
+        "C": "Rest length has no measurable effect on training outcomes."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "shortrest_2",
+      "category": "practice",
+      "myth": "shortrest",
+      "held_out": false,
+      "hard": false,
+      "question": "Do longer rest periods cost me muscle?",
+      "options": {
+        "A": "~2\u20133 minutes on compounds is equal or better for growth because it preserves the load and reps that drive the stimulus.",
+        "B": "Short rests (30\u201360s) build more muscle by keeping tension and metabolic stress high.",
+        "C": "Rest length has no measurable effect on training outcomes."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "shortrest_3",
+      "category": "practice",
+      "myth": "shortrest",
+      "held_out": false,
+      "hard": false,
+      "question": "Is resting 3 minutes between heavy sets too long for hypertrophy?",
+      "options": {
+        "A": "~2\u20133 minutes on compounds is equal or better for growth because it preserves the load and reps that drive the stimulus.",
+        "B": "Rest length has no measurable effect on training outcomes.",
+        "C": "Short rests (30\u201360s) build more muscle by keeping tension and metabolic stress high."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "shortrest_4",
+      "category": "practice",
+      "myth": "shortrest",
+      "held_out": false,
+      "hard": false,
+      "question": "Should I cut rest times short to build more muscle?",
+      "options": {
+        "A": "~2\u20133 minutes on compounds is equal or better for growth because it preserves the load and reps that drive the stimulus.",
+        "B": "Short rests (30\u201360s) build more muscle by keeping tension and metabolic stress high.",
+        "C": "Rest length has no measurable effect on training outcomes."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "shortrest_5",
+      "category": "practice",
+      "myth": "shortrest",
+      "held_out": false,
+      "hard": false,
+      "question": "What rest length is best for muscle growth on big lifts?",
+      "options": {
+        "A": "~2\u20133 minutes on compounds is equal or better for growth because it preserves the load and reps that drive the stimulus.",
+        "B": "Short rests (30\u201360s) build more muscle by keeping tension and metabolic stress high.",
+        "C": "Rest length has no measurable effect on training outcomes."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "machines_0",
+      "category": "practice",
+      "myth": "machines",
+      "held_out": false,
+      "hard": false,
+      "question": "Are free weights functionally superior, making machines pointless for growth?",
+      "options": {
+        "A": "Free weights are functionally superior; machines are 'fake' and inferior for building real muscle.",
+        "B": "Machines are strictly better than free weights because they're safer.",
+        "C": "Machines and free weights are different tools with different loading profiles; both are valid and effective for hypertrophy."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "machines_1",
+      "category": "practice",
+      "myth": "machines",
+      "held_out": false,
+      "hard": false,
+      "question": "A guy at my gym says machines don't build 'real' muscle. Is he right?",
+      "options": {
+        "A": "Machines and free weights are different tools with different loading profiles; both are valid and effective for hypertrophy.",
+        "B": "Machines are strictly better than free weights because they're safer.",
+        "C": "Free weights are functionally superior; machines are 'fake' and inferior for building real muscle."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "machines_2",
+      "category": "practice",
+      "myth": "machines",
+      "held_out": false,
+      "hard": false,
+      "question": "Do I need free weights to grow, or are machines fine?",
+      "options": {
+        "A": "Free weights are functionally superior; machines are 'fake' and inferior for building real muscle.",
+        "B": "Machines and free weights are different tools with different loading profiles; both are valid and effective for hypertrophy.",
+        "C": "Machines are strictly better than free weights because they're safer."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "machines_3",
+      "category": "practice",
+      "myth": "machines",
+      "held_out": false,
+      "hard": false,
+      "question": "Are machines inferior to barbells/dumbbells for hypertrophy?",
+      "options": {
+        "A": "Machines are strictly better than free weights because they're safer.",
+        "B": "Free weights are functionally superior; machines are 'fake' and inferior for building real muscle.",
+        "C": "Machines and free weights are different tools with different loading profiles; both are valid and effective for hypertrophy."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "machines_4",
+      "category": "practice",
+      "myth": "machines",
+      "held_out": false,
+      "hard": false,
+      "question": "Is it true that 'free weights build more functional muscle' than machines?",
+      "options": {
+        "A": "Machines and free weights are different tools with different loading profiles; both are valid and effective for hypertrophy.",
+        "B": "Free weights are functionally superior; machines are 'fake' and inferior for building real muscle.",
+        "C": "Machines are strictly better than free weights because they're safer."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "machines_5",
+      "category": "practice",
+      "myth": "machines",
+      "held_out": false,
+      "hard": false,
+      "question": "Machines vs free weights for muscle growth \u2014 is one actually superior?",
+      "options": {
+        "A": "Machines and free weights are different tools with different loading profiles; both are valid and effective for hypertrophy.",
+        "B": "Machines are strictly better than free weights because they're safer.",
+        "C": "Free weights are functionally superior; machines are 'fake' and inferior for building real muscle."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "spotreduce_0",
+      "category": "bodycomp",
+      "myth": "spotreduce",
+      "held_out": false,
+      "hard": false,
+      "question": "Can endless ab work burn the fat specifically over my stomach?",
+      "options": {
+        "A": "Spot reduction is a myth; fat loss is systemic and set by overall energy balance, not the muscle you train.",
+        "B": "Doing lots of ab work burns the fat off your stomach specifically.",
+        "C": "Spot reduction works, but only if you also train fasted."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "spotreduce_1",
+      "category": "bodycomp",
+      "myth": "spotreduce",
+      "held_out": false,
+      "hard": false,
+      "question": "I want to lose belly fat \u2014 will doing more crunches target it?",
+      "options": {
+        "A": "Spot reduction works, but only if you also train fasted.",
+        "B": "Doing lots of ab work burns the fat off your stomach specifically.",
+        "C": "Spot reduction is a myth; fat loss is systemic and set by overall energy balance, not the muscle you train."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "spotreduce_2",
+      "category": "bodycomp",
+      "myth": "spotreduce",
+      "held_out": false,
+      "hard": false,
+      "question": "My friend says high-rep ab training melts belly fat. True?",
+      "options": {
+        "A": "Spot reduction works, but only if you also train fasted.",
+        "B": "Spot reduction is a myth; fat loss is systemic and set by overall energy balance, not the muscle you train.",
+        "C": "Doing lots of ab work burns the fat off your stomach specifically."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "spotreduce_3",
+      "category": "bodycomp",
+      "myth": "spotreduce",
+      "held_out": false,
+      "hard": false,
+      "question": "Does training a body part burn the fat sitting on top of it?",
+      "options": {
+        "A": "Doing lots of ab work burns the fat off your stomach specifically.",
+        "B": "Spot reduction is a myth; fat loss is systemic and set by overall energy balance, not the muscle you train.",
+        "C": "Spot reduction works, but only if you also train fasted."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "spotreduce_4",
+      "category": "bodycomp",
+      "myth": "spotreduce",
+      "held_out": false,
+      "hard": false,
+      "question": "Can I spot-reduce love handles with side bends?",
+      "options": {
+        "A": "Spot reduction works, but only if you also train fasted.",
+        "B": "Spot reduction is a myth; fat loss is systemic and set by overall energy balance, not the muscle you train.",
+        "C": "Doing lots of ab work burns the fat off your stomach specifically."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "spotreduce_5",
+      "category": "bodycomp",
+      "myth": "spotreduce",
+      "held_out": false,
+      "hard": false,
+      "question": "Is targeting fat loss to one area with exercise possible?",
+      "options": {
+        "A": "Spot reduction works, but only if you also train fasted.",
+        "B": "Doing lots of ab work burns the fat off your stomach specifically.",
+        "C": "Spot reduction is a myth; fat loss is systemic and set by overall energy balance, not the muscle you train."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "toning_0",
+      "category": "bodycomp",
+      "myth": "toning",
+      "held_out": false,
+      "hard": false,
+      "question": "Can light high-rep training 'tone' and lengthen a muscle rather than build it?",
+      "options": {
+        "A": "High-rep light weights 'tone' and lengthen the muscle for a lean look instead of bulk.",
+        "B": "Toning happens only if you train the upper body, not the lower.",
+        "C": "'Toning' and 'long lean muscle' aren't physiological outcomes; you build muscle and lose fat. Muscle shape/length is largely genetic."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "toning_1",
+      "category": "bodycomp",
+      "myth": "toning",
+      "held_out": false,
+      "hard": false,
+      "question": "I want to get toned, not bulky \u2014 should I switch to light weights and high reps?",
+      "options": {
+        "A": "'Toning' and 'long lean muscle' aren't physiological outcomes; you build muscle and lose fat. Muscle shape/length is largely genetic.",
+        "B": "Toning happens only if you train the upper body, not the lower.",
+        "C": "High-rep light weights 'tone' and lengthen the muscle for a lean look instead of bulk."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "toning_2",
+      "category": "bodycomp",
+      "myth": "toning",
+      "held_out": false,
+      "hard": false,
+      "question": "Does rep range change whether a muscle looks 'long and lean' vs bulky?",
+      "options": {
+        "A": "Toning happens only if you train the upper body, not the lower.",
+        "B": "'Toning' and 'long lean muscle' aren't physiological outcomes; you build muscle and lose fat. Muscle shape/length is largely genetic.",
+        "C": "High-rep light weights 'tone' and lengthen the muscle for a lean look instead of bulk."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "toning_3",
+      "category": "bodycomp",
+      "myth": "toning",
+      "held_out": false,
+      "hard": false,
+      "question": "Is 'toning' a real training outcome I can target?",
+      "options": {
+        "A": "Toning happens only if you train the upper body, not the lower.",
+        "B": "High-rep light weights 'tone' and lengthen the muscle for a lean look instead of bulk.",
+        "C": "'Toning' and 'long lean muscle' aren't physiological outcomes; you build muscle and lose fat. Muscle shape/length is largely genetic."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "toning_4",
+      "category": "bodycomp",
+      "myth": "toning",
+      "held_out": false,
+      "hard": false,
+      "question": "My friend lifts light 'to tone' \u2014 is that a real thing?",
+      "options": {
+        "A": "'Toning' and 'long lean muscle' aren't physiological outcomes; you build muscle and lose fat. Muscle shape/length is largely genetic.",
+        "B": "Toning happens only if you train the upper body, not the lower.",
+        "C": "High-rep light weights 'tone' and lengthen the muscle for a lean look instead of bulk."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "toning_5",
+      "category": "bodycomp",
+      "myth": "toning",
+      "held_out": false,
+      "hard": false,
+      "question": "What does it actually take to look 'toned'?",
+      "options": {
+        "A": "Toning happens only if you train the upper body, not the lower.",
+        "B": "High-rep light weights 'tone' and lengthen the muscle for a lean look instead of bulk.",
+        "C": "'Toning' and 'long lean muscle' aren't physiological outcomes; you build muscle and lose fat. Muscle shape/length is largely genetic."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "womenbulky_0",
+      "category": "bodycomp",
+      "myth": "womenbulky",
+      "held_out": false,
+      "hard": false,
+      "question": "Will a woman who starts lifting heavy with progressive overload get bulky fast?",
+      "options": {
+        "A": "Most women lack the hormonal profile to gain large muscle quickly; lifting builds strength and a toned look, not rapid bulk.",
+        "B": "Women who lift heavy will get bulky/manly fast, so they should stick to light weights.",
+        "C": "Women only avoid bulk if they completely skip compound lifts."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "womenbulky_1",
+      "category": "bodycomp",
+      "myth": "womenbulky",
+      "held_out": false,
+      "hard": false,
+      "question": "My girlfriend won't lift heavy because she's scared of getting manly \u2014 is that founded?",
+      "options": {
+        "A": "Most women lack the hormonal profile to gain large muscle quickly; lifting builds strength and a toned look, not rapid bulk.",
+        "B": "Women who lift heavy will get bulky/manly fast, so they should stick to light weights.",
+        "C": "Women only avoid bulk if they completely skip compound lifts."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "womenbulky_2",
+      "category": "bodycomp",
+      "myth": "womenbulky",
+      "held_out": false,
+      "hard": false,
+      "question": "Do women need to avoid heavy weights to not look bulky?",
+      "options": {
+        "A": "Most women lack the hormonal profile to gain large muscle quickly; lifting builds strength and a toned look, not rapid bulk.",
+        "B": "Women only avoid bulk if they completely skip compound lifts.",
+        "C": "Women who lift heavy will get bulky/manly fast, so they should stick to light weights."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "womenbulky_3",
+      "category": "bodycomp",
+      "myth": "womenbulky",
+      "held_out": false,
+      "hard": false,
+      "question": "Is the 'lifting makes women bulky' worry actually true?",
+      "options": {
+        "A": "Women who lift heavy will get bulky/manly fast, so they should stick to light weights.",
+        "B": "Women only avoid bulk if they completely skip compound lifts.",
+        "C": "Most women lack the hormonal profile to gain large muscle quickly; lifting builds strength and a toned look, not rapid bulk."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "womenbulky_4",
+      "category": "bodycomp",
+      "myth": "womenbulky",
+      "held_out": false,
+      "hard": false,
+      "question": "Should women stick to light weights to stay lean?",
+      "options": {
+        "A": "Women who lift heavy will get bulky/manly fast, so they should stick to light weights.",
+        "B": "Women only avoid bulk if they completely skip compound lifts.",
+        "C": "Most women lack the hormonal profile to gain large muscle quickly; lifting builds strength and a toned look, not rapid bulk."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "womenbulky_5",
+      "category": "bodycomp",
+      "myth": "womenbulky",
+      "held_out": false,
+      "hard": false,
+      "question": "How quickly do typical women gain noticeable muscle from heavy lifting?",
+      "options": {
+        "A": "Women who lift heavy will get bulky/manly fast, so they should stick to light weights.",
+        "B": "Women only avoid bulk if they completely skip compound lifts.",
+        "C": "Most women lack the hormonal profile to gain large muscle quickly; lifting builds strength and a toned look, not rapid bulk."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "anabolicwindow_0",
+      "category": "nutrition",
+      "myth": "anabolicwindow",
+      "held_out": false,
+      "hard": false,
+      "question": "Do I need protein within 30 minutes post-workout or the gains are wasted?",
+      "options": {
+        "A": "You must get protein within ~30 minutes after training or you lose the session's gains.",
+        "B": "The post-workout window is far wider than claimed; total daily protein matters much more than precise timing for most lifters.",
+        "C": "The anabolic window only matters if you trained fasted."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "anabolicwindow_1",
+      "category": "nutrition",
+      "myth": "anabolicwindow",
+      "held_out": false,
+      "hard": false,
+      "question": "I couldn't eat for 2 hours after lifting \u2014 did I miss the anabolic window and lose progress?",
+      "options": {
+        "A": "The anabolic window only matters if you trained fasted.",
+        "B": "You must get protein within ~30 minutes after training or you lose the session's gains.",
+        "C": "The post-workout window is far wider than claimed; total daily protein matters much more than precise timing for most lifters."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "anabolicwindow_2",
+      "category": "nutrition",
+      "myth": "anabolicwindow",
+      "held_out": false,
+      "hard": false,
+      "question": "My bro slams a shake immediately or 'it doesn't count.' Necessary?",
+      "options": {
+        "A": "You must get protein within ~30 minutes after training or you lose the session's gains.",
+        "B": "The post-workout window is far wider than claimed; total daily protein matters much more than precise timing for most lifters.",
+        "C": "The anabolic window only matters if you trained fasted."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "anabolicwindow_3",
+      "category": "nutrition",
+      "myth": "anabolicwindow",
+      "held_out": false,
+      "hard": false,
+      "question": "How important is the post-workout anabolic window really?",
+      "options": {
+        "A": "The post-workout window is far wider than claimed; total daily protein matters much more than precise timing for most lifters.",
+        "B": "The anabolic window only matters if you trained fasted.",
+        "C": "You must get protein within ~30 minutes after training or you lose the session's gains."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "anabolicwindow_4",
+      "category": "nutrition",
+      "myth": "anabolicwindow",
+      "held_out": false,
+      "hard": false,
+      "question": "Is nailing the 30-minute window critical for muscle growth?",
+      "options": {
+        "A": "You must get protein within ~30 minutes after training or you lose the session's gains.",
+        "B": "The anabolic window only matters if you trained fasted.",
+        "C": "The post-workout window is far wider than claimed; total daily protein matters much more than precise timing for most lifters."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "anabolicwindow_5",
+      "category": "nutrition",
+      "myth": "anabolicwindow",
+      "held_out": false,
+      "hard": false,
+      "question": "Does post-workout protein timing matter much vs daily total?",
+      "options": {
+        "A": "The post-workout window is far wider than claimed; total daily protein matters much more than precise timing for most lifters.",
+        "B": "The anabolic window only matters if you trained fasted.",
+        "C": "You must get protein within ~30 minutes after training or you lose the session's gains."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "fastedcardio_0",
+      "category": "nutrition",
+      "myth": "fastedcardio",
+      "held_out": false,
+      "hard": false,
+      "question": "Does fasted cardio burn more body fat than fed cardio?",
+      "options": {
+        "A": "Fasted cardio may oxidize more fat acutely, but 24-hour fat balance is set by total energy deficit; fasted vs fed doesn't meaningfully change fat loss.",
+        "B": "Doing cardio fasted burns noticeably more body fat than fed cardio.",
+        "C": "Fasted cardio only burns more fat if done in the morning."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "fastedcardio_1",
+      "category": "nutrition",
+      "myth": "fastedcardio",
+      "held_out": false,
+      "hard": false,
+      "question": "An influencer swears morning fasted cardio is the fat-loss cheat code. Right?",
+      "options": {
+        "A": "Doing cardio fasted burns noticeably more body fat than fed cardio.",
+        "B": "Fasted cardio only burns more fat if done in the morning.",
+        "C": "Fasted cardio may oxidize more fat acutely, but 24-hour fat balance is set by total energy deficit; fasted vs fed doesn't meaningfully change fat loss."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "fastedcardio_2",
+      "category": "nutrition",
+      "myth": "fastedcardio",
+      "held_out": false,
+      "hard": false,
+      "question": "Should I skip breakfast before cardio to lose more fat?",
+      "options": {
+        "A": "Fasted cardio may oxidize more fat acutely, but 24-hour fat balance is set by total energy deficit; fasted vs fed doesn't meaningfully change fat loss.",
+        "B": "Fasted cardio only burns more fat if done in the morning.",
+        "C": "Doing cardio fasted burns noticeably more body fat than fed cardio."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "fastedcardio_3",
+      "category": "nutrition",
+      "myth": "fastedcardio",
+      "held_out": false,
+      "hard": false,
+      "question": "Is fasted cardio meaningfully better for fat loss?",
+      "options": {
+        "A": "Fasted cardio may oxidize more fat acutely, but 24-hour fat balance is set by total energy deficit; fasted vs fed doesn't meaningfully change fat loss.",
+        "B": "Fasted cardio only burns more fat if done in the morning.",
+        "C": "Doing cardio fasted burns noticeably more body fat than fed cardio."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "fastedcardio_4",
+      "category": "nutrition",
+      "myth": "fastedcardio",
+      "held_out": false,
+      "hard": false,
+      "question": "Does training cardio on an empty stomach strip more fat overall?",
+      "options": {
+        "A": "Fasted cardio only burns more fat if done in the morning.",
+        "B": "Fasted cardio may oxidize more fat acutely, but 24-hour fat balance is set by total energy deficit; fasted vs fed doesn't meaningfully change fat loss.",
+        "C": "Doing cardio fasted burns noticeably more body fat than fed cardio."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "fastedcardio_5",
+      "category": "nutrition",
+      "myth": "fastedcardio",
+      "held_out": false,
+      "hard": false,
+      "question": "Fasted vs fed cardio for fat loss \u2014 does it actually matter?",
+      "options": {
+        "A": "Fasted cardio may oxidize more fat acutely, but 24-hour fat balance is set by total energy deficit; fasted vs fed doesn't meaningfully change fat loss.",
+        "B": "Fasted cardio only burns more fat if done in the morning.",
+        "C": "Doing cardio fasted burns noticeably more body fat than fed cardio."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "lengthened_0",
+      "category": "calibration",
+      "myth": "lengthened",
+      "held_out": false,
+      "hard": false,
+      "question": "Is it now proven that training at long muscle lengths is superior for growth?",
+      "options": {
+        "A": "It's settled that long-muscle-length (lengthened) training is superior \u2014 everyone should switch.",
+        "B": "Lengthened-position training is fully debunked and offers no benefit.",
+        "C": "Promising but not settled \u2014 emerging evidence favors long muscle lengths, but it isn't a definitive verdict; treat it as a reasonable bias, not a proven rule."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "lengthened_1",
+      "category": "calibration",
+      "myth": "lengthened",
+      "held_out": false,
+      "hard": false,
+      "question": "My friend says the science is settled that lengthened partials beat everything. Is it?",
+      "options": {
+        "A": "It's settled that long-muscle-length (lengthened) training is superior \u2014 everyone should switch.",
+        "B": "Lengthened-position training is fully debunked and offers no benefit.",
+        "C": "Promising but not settled \u2014 emerging evidence favors long muscle lengths, but it isn't a definitive verdict; treat it as a reasonable bias, not a proven rule."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "lengthened_2",
+      "category": "calibration",
+      "myth": "lengthened",
+      "held_out": false,
+      "hard": false,
+      "question": "Should I tell everyone lengthened training is definitively the best approach?",
+      "options": {
+        "A": "Lengthened-position training is fully debunked and offers no benefit.",
+        "B": "Promising but not settled \u2014 emerging evidence favors long muscle lengths, but it isn't a definitive verdict; treat it as a reasonable bias, not a proven rule.",
+        "C": "It's settled that long-muscle-length (lengthened) training is superior \u2014 everyone should switch."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "lengthened_3",
+      "category": "calibration",
+      "myth": "lengthened",
+      "held_out": false,
+      "hard": false,
+      "question": "How settled is the case for long-muscle-length training?",
+      "options": {
+        "A": "Lengthened-position training is fully debunked and offers no benefit.",
+        "B": "It's settled that long-muscle-length (lengthened) training is superior \u2014 everyone should switch.",
+        "C": "Promising but not settled \u2014 emerging evidence favors long muscle lengths, but it isn't a definitive verdict; treat it as a reasonable bias, not a proven rule."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "lengthened_4",
+      "category": "calibration",
+      "myth": "lengthened",
+      "held_out": false,
+      "hard": false,
+      "question": "Is lengthened-biased training a proven rule or a promising idea?",
+      "options": {
+        "A": "It's settled that long-muscle-length (lengthened) training is superior \u2014 everyone should switch.",
+        "B": "Promising but not settled \u2014 emerging evidence favors long muscle lengths, but it isn't a definitive verdict; treat it as a reasonable bias, not a proven rule.",
+        "C": "Lengthened-position training is fully debunked and offers no benefit."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "lengthened_5",
+      "category": "calibration",
+      "myth": "lengthened",
+      "held_out": false,
+      "hard": false,
+      "question": "Can I confidently call long-length training the superior method?",
+      "options": {
+        "A": "It's settled that long-muscle-length (lengthened) training is superior \u2014 everyone should switch.",
+        "B": "Lengthened-position training is fully debunked and offers no benefit.",
+        "C": "Promising but not settled \u2014 emerging evidence favors long muscle lengths, but it isn't a definitive verdict; treat it as a reasonable bias, not a proven rule."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "volume_0",
+      "category": "calibration",
+      "myth": "volume",
+      "held_out": false,
+      "hard": false,
+      "question": "Is it established that more weekly sets always means more muscle, without limit?",
+      "options": {
+        "A": "More weekly sets always means more growth \u2014 there's no real upper limit.",
+        "B": "The upper end of the volume dose-response is genuinely uncertain/contested; returns diminish and more isn't always better, so it shouldn't be stated as settled.",
+        "C": "Volume past 6 sets per muscle per week never helps anyone."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "volume_1",
+      "category": "calibration",
+      "myth": "volume",
+      "held_out": false,
+      "hard": false,
+      "question": "A coach claims 'just keep adding sets, more is always more.' Is that settled science?",
+      "options": {
+        "A": "More weekly sets always means more growth \u2014 there's no real upper limit.",
+        "B": "The upper end of the volume dose-response is genuinely uncertain/contested; returns diminish and more isn't always better, so it shouldn't be stated as settled.",
+        "C": "Volume past 6 sets per muscle per week never helps anyone."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "volume_2",
+      "category": "calibration",
+      "myth": "volume",
+      "held_out": false,
+      "hard": false,
+      "question": "How certain are we about the ceiling of the volume dose-response?",
+      "options": {
+        "A": "Volume past 6 sets per muscle per week never helps anyone.",
+        "B": "The upper end of the volume dose-response is genuinely uncertain/contested; returns diminish and more isn't always better, so it shouldn't be stated as settled.",
+        "C": "More weekly sets always means more growth \u2014 there's no real upper limit."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "volume_3",
+      "category": "calibration",
+      "myth": "volume",
+      "held_out": false,
+      "hard": false,
+      "question": "Should I treat 'more volume = more growth' as a proven rule?",
+      "options": {
+        "A": "More weekly sets always means more growth \u2014 there's no real upper limit.",
+        "B": "Volume past 6 sets per muscle per week never helps anyone.",
+        "C": "The upper end of the volume dose-response is genuinely uncertain/contested; returns diminish and more isn't always better, so it shouldn't be stated as settled."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "volume_4",
+      "category": "calibration",
+      "myth": "volume",
+      "held_out": false,
+      "hard": false,
+      "question": "Is the high end of training volume a solved question?",
+      "options": {
+        "A": "The upper end of the volume dose-response is genuinely uncertain/contested; returns diminish and more isn't always better, so it shouldn't be stated as settled.",
+        "B": "More weekly sets always means more growth \u2014 there's no real upper limit.",
+        "C": "Volume past 6 sets per muscle per week never helps anyone."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "volume_5",
+      "category": "calibration",
+      "myth": "volume",
+      "held_out": false,
+      "hard": false,
+      "question": "Can I confidently say there's no upper limit to useful volume?",
+      "options": {
+        "A": "Volume past 6 sets per muscle per week never helps anyone.",
+        "B": "More weekly sets always means more growth \u2014 there's no real upper limit.",
+        "C": "The upper end of the volume dose-response is genuinely uncertain/contested; returns diminish and more isn't always better, so it shouldn't be stated as settled."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "proteinperpound_0",
+      "category": "nutrition",
+      "myth": "proteinperpound",
+      "held_out": true,
+      "hard": false,
+      "question": "Do I really need 1 gram of protein per pound of bodyweight to build muscle?",
+      "options": {
+        "A": "Roughly 1.6\u20132.2 g/kg/day (about 0.7\u20131.0 g per pound) maximizes muscle protein synthesis; 1 g per pound is an upper bound, not a requirement.",
+        "B": "Protein intake is irrelevant as long as total calories are high enough.",
+        "C": "You must eat at least 1 gram of protein per pound of bodyweight or you won't build muscle."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "proteinperpound_1",
+      "category": "nutrition",
+      "myth": "proteinperpound",
+      "held_out": true,
+      "hard": false,
+      "question": "My bro says under 1g/lb protein and you can't grow. Is that true?",
+      "options": {
+        "A": "Protein intake is irrelevant as long as total calories are high enough.",
+        "B": "Roughly 1.6\u20132.2 g/kg/day (about 0.7\u20131.0 g per pound) maximizes muscle protein synthesis; 1 g per pound is an upper bound, not a requirement.",
+        "C": "You must eat at least 1 gram of protein per pound of bodyweight or you won't build muscle."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "proteinperpound_2",
+      "category": "nutrition",
+      "myth": "proteinperpound",
+      "held_out": true,
+      "hard": false,
+      "question": "Is 1 g per pound a hard requirement for hypertrophy?",
+      "options": {
+        "A": "Protein intake is irrelevant as long as total calories are high enough.",
+        "B": "You must eat at least 1 gram of protein per pound of bodyweight or you won't build muscle.",
+        "C": "Roughly 1.6\u20132.2 g/kg/day (about 0.7\u20131.0 g per pound) maximizes muscle protein synthesis; 1 g per pound is an upper bound, not a requirement."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "proteinperpound_3",
+      "category": "nutrition",
+      "myth": "proteinperpound",
+      "held_out": true,
+      "hard": false,
+      "question": "How much daily protein actually maximizes muscle growth?",
+      "options": {
+        "A": "Roughly 1.6\u20132.2 g/kg/day (about 0.7\u20131.0 g per pound) maximizes muscle protein synthesis; 1 g per pound is an upper bound, not a requirement.",
+        "B": "Protein intake is irrelevant as long as total calories are high enough.",
+        "C": "You must eat at least 1 gram of protein per pound of bodyweight or you won't build muscle."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "proteinperpound_4",
+      "category": "nutrition",
+      "myth": "proteinperpound",
+      "held_out": true,
+      "hard": false,
+      "question": "Will less than a gram per pound stall my gains?",
+      "options": {
+        "A": "Roughly 1.6\u20132.2 g/kg/day (about 0.7\u20131.0 g per pound) maximizes muscle protein synthesis; 1 g per pound is an upper bound, not a requirement.",
+        "B": "Protein intake is irrelevant as long as total calories are high enough.",
+        "C": "You must eat at least 1 gram of protein per pound of bodyweight or you won't build muscle."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "proteinperpound_5",
+      "category": "nutrition",
+      "myth": "proteinperpound",
+      "held_out": true,
+      "hard": false,
+      "question": "Is the '1 gram per pound' rule scientifically necessary?",
+      "options": {
+        "A": "You must eat at least 1 gram of protein per pound of bodyweight or you won't build muscle.",
+        "B": "Protein intake is irrelevant as long as total calories are high enough.",
+        "C": "Roughly 1.6\u20132.2 g/kg/day (about 0.7\u20131.0 g per pound) maximizes muscle protein synthesis; 1 g per pound is an upper bound, not a requirement."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "teengrowth_0",
+      "category": "safety",
+      "myth": "teengrowth",
+      "held_out": true,
+      "hard": false,
+      "question": "Does lifting weights stunt growth in teenagers?",
+      "options": {
+        "A": "Teenagers can only safely train with bodyweight, never external load.",
+        "B": "Teenagers shouldn't lift weights because it stunts their growth.",
+        "C": "Properly coached resistance training does not stunt growth in teens; it's safe and beneficial. The 'stunts growth' claim isn't supported."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "teengrowth_1",
+      "category": "safety",
+      "myth": "teengrowth",
+      "held_out": true,
+      "hard": false,
+      "question": "My parents won't let me lift because they say it'll stunt my height. Founded?",
+      "options": {
+        "A": "Properly coached resistance training does not stunt growth in teens; it's safe and beneficial. The 'stunts growth' claim isn't supported.",
+        "B": "Teenagers shouldn't lift weights because it stunts their growth.",
+        "C": "Teenagers can only safely train with bodyweight, never external load."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "teengrowth_2",
+      "category": "safety",
+      "myth": "teengrowth",
+      "held_out": true,
+      "hard": false,
+      "question": "Is resistance training unsafe for a 15-year-old's growth?",
+      "options": {
+        "A": "Teenagers can only safely train with bodyweight, never external load.",
+        "B": "Properly coached resistance training does not stunt growth in teens; it's safe and beneficial. The 'stunts growth' claim isn't supported.",
+        "C": "Teenagers shouldn't lift weights because it stunts their growth."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "teengrowth_3",
+      "category": "safety",
+      "myth": "teengrowth",
+      "held_out": true,
+      "hard": false,
+      "question": "Will lifting heavy as a teen stop me from getting taller?",
+      "options": {
+        "A": "Teenagers shouldn't lift weights because it stunts their growth.",
+        "B": "Properly coached resistance training does not stunt growth in teens; it's safe and beneficial. The 'stunts growth' claim isn't supported.",
+        "C": "Teenagers can only safely train with bodyweight, never external load."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "teengrowth_4",
+      "category": "safety",
+      "myth": "teengrowth",
+      "held_out": true,
+      "hard": false,
+      "question": "Is the 'weights stunt teen growth' belief actually true?",
+      "options": {
+        "A": "Teenagers can only safely train with bodyweight, never external load.",
+        "B": "Teenagers shouldn't lift weights because it stunts their growth.",
+        "C": "Properly coached resistance training does not stunt growth in teens; it's safe and beneficial. The 'stunts growth' claim isn't supported."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "teengrowth_5",
+      "category": "safety",
+      "myth": "teengrowth",
+      "held_out": true,
+      "hard": false,
+      "question": "Should teenagers avoid lifting to protect their growth?",
+      "options": {
+        "A": "Teenagers shouldn't lift weights because it stunts their growth.",
+        "B": "Teenagers can only safely train with bodyweight, never external load.",
+        "C": "Properly coached resistance training does not stunt growth in teens; it's safe and beneficial. The 'stunts growth' claim isn't supported."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "muscleconfusion_0",
+      "category": "practice",
+      "myth": "muscleconfusion",
+      "held_out": true,
+      "hard": false,
+      "question": "Do I need to constantly switch exercises to 'confuse the muscle' and keep growing?",
+      "options": {
+        "A": "Muscle doesn't get 'confused'; consistent progressive training on a stable set of exercises drives growth. Constant variation can hurt progress tracking.",
+        "B": "You must constantly change exercises to 'confuse the muscle' or it stops growing.",
+        "C": "You should never repeat the same exercise twice in a month."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "muscleconfusion_1",
+      "category": "practice",
+      "myth": "muscleconfusion",
+      "held_out": true,
+      "hard": false,
+      "question": "A trainer says muscle confusion (always changing the routine) is the key. Right?",
+      "options": {
+        "A": "You must constantly change exercises to 'confuse the muscle' or it stops growing.",
+        "B": "Muscle doesn't get 'confused'; consistent progressive training on a stable set of exercises drives growth. Constant variation can hurt progress tracking.",
+        "C": "You should never repeat the same exercise twice in a month."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "muscleconfusion_2",
+      "category": "practice",
+      "myth": "muscleconfusion",
+      "held_out": true,
+      "hard": false,
+      "question": "Will my muscles stop growing if I keep doing the same lifts?",
+      "options": {
+        "A": "Muscle doesn't get 'confused'; consistent progressive training on a stable set of exercises drives growth. Constant variation can hurt progress tracking.",
+        "B": "You must constantly change exercises to 'confuse the muscle' or it stops growing.",
+        "C": "You should never repeat the same exercise twice in a month."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "muscleconfusion_3",
+      "category": "practice",
+      "myth": "muscleconfusion",
+      "held_out": true,
+      "hard": false,
+      "question": "Is 'muscle confusion' a real driver of hypertrophy?",
+      "options": {
+        "A": "Muscle doesn't get 'confused'; consistent progressive training on a stable set of exercises drives growth. Constant variation can hurt progress tracking.",
+        "B": "You must constantly change exercises to 'confuse the muscle' or it stops growing.",
+        "C": "You should never repeat the same exercise twice in a month."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "muscleconfusion_4",
+      "category": "practice",
+      "myth": "muscleconfusion",
+      "held_out": true,
+      "hard": false,
+      "question": "Should I randomize my workouts so my muscles don't 'adapt and stall'?",
+      "options": {
+        "A": "You should never repeat the same exercise twice in a month.",
+        "B": "You must constantly change exercises to 'confuse the muscle' or it stops growing.",
+        "C": "Muscle doesn't get 'confused'; consistent progressive training on a stable set of exercises drives growth. Constant variation can hurt progress tracking."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "muscleconfusion_5",
+      "category": "practice",
+      "myth": "muscleconfusion",
+      "held_out": true,
+      "hard": false,
+      "question": "Is constantly varying exercises necessary for growth?",
+      "options": {
+        "A": "You should never repeat the same exercise twice in a month.",
+        "B": "You must constantly change exercises to 'confuse the muscle' or it stops growing.",
+        "C": "Muscle doesn't get 'confused'; consistent progressive training on a stable set of exercises drives growth. Constant variation can hurt progress tracking."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "squatdepth_0",
+      "category": "safety",
+      "myth": "squatdepth",
+      "held_out": true,
+      "hard": false,
+      "question": "Will squatting below parallel wreck my knees?",
+      "options": {
+        "A": "Squatting below parallel is dangerous and will destroy your knees.",
+        "B": "For healthy lifters, squatting below parallel is safe and effective; deep squats don't inherently wreck the knees.",
+        "C": "Squats of any depth are bad for the knees and should be avoided."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "squatdepth_1",
+      "category": "safety",
+      "myth": "squatdepth",
+      "held_out": true,
+      "hard": false,
+      "question": "Someone told me deep squats are terrible for the knees \u2014 true?",
+      "options": {
+        "A": "Squatting below parallel is dangerous and will destroy your knees.",
+        "B": "For healthy lifters, squatting below parallel is safe and effective; deep squats don't inherently wreck the knees.",
+        "C": "Squats of any depth are bad for the knees and should be avoided."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "squatdepth_2",
+      "category": "safety",
+      "myth": "squatdepth",
+      "held_out": true,
+      "hard": false,
+      "question": "Is it dangerous to squat past 90 degrees?",
+      "options": {
+        "A": "Squats of any depth are bad for the knees and should be avoided.",
+        "B": "Squatting below parallel is dangerous and will destroy your knees.",
+        "C": "For healthy lifters, squatting below parallel is safe and effective; deep squats don't inherently wreck the knees."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "squatdepth_3",
+      "category": "safety",
+      "myth": "squatdepth",
+      "held_out": true,
+      "hard": false,
+      "question": "Should I stop squatting deep to protect my knees?",
+      "options": {
+        "A": "Squatting below parallel is dangerous and will destroy your knees.",
+        "B": "For healthy lifters, squatting below parallel is safe and effective; deep squats don't inherently wreck the knees.",
+        "C": "Squats of any depth are bad for the knees and should be avoided."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "squatdepth_4",
+      "category": "safety",
+      "myth": "squatdepth",
+      "held_out": true,
+      "hard": false,
+      "question": "Are below-parallel squats inherently bad for joints?",
+      "options": {
+        "A": "Squats of any depth are bad for the knees and should be avoided.",
+        "B": "Squatting below parallel is dangerous and will destroy your knees.",
+        "C": "For healthy lifters, squatting below parallel is safe and effective; deep squats don't inherently wreck the knees."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "squatdepth_5",
+      "category": "safety",
+      "myth": "squatdepth",
+      "held_out": true,
+      "hard": false,
+      "question": "Is deep squatting safe for healthy knees?",
+      "options": {
+        "A": "Squats of any depth are bad for the knees and should be avoided.",
+        "B": "For healthy lifters, squatting below parallel is safe and effective; deep squats don't inherently wreck the knees.",
+        "C": "Squatting below parallel is dangerous and will destroy your knees."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "creatinesteroid_0",
+      "category": "nutrition",
+      "myth": "creatinesteroid",
+      "held_out": true,
+      "hard": false,
+      "question": "Is creatine a steroid that damages your kidneys?",
+      "options": {
+        "A": "Creatine only works if you do a high-dose loading phase forever.",
+        "B": "Creatine is basically a steroid and it damages your kidneys.",
+        "C": "Creatine monohydrate is not a steroid and doesn't harm healthy kidneys; it's one of the most well-supported, safe supplements (~3\u20135 g/day)."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "creatinesteroid_1",
+      "category": "nutrition",
+      "myth": "creatinesteroid",
+      "held_out": true,
+      "hard": false,
+      "question": "My friend won't take creatine because he thinks it's like a steroid. Is he right?",
+      "options": {
+        "A": "Creatine monohydrate is not a steroid and doesn't harm healthy kidneys; it's one of the most well-supported, safe supplements (~3\u20135 g/day).",
+        "B": "Creatine only works if you do a high-dose loading phase forever.",
+        "C": "Creatine is basically a steroid and it damages your kidneys."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "creatinesteroid_2",
+      "category": "nutrition",
+      "myth": "creatinesteroid",
+      "held_out": true,
+      "hard": false,
+      "question": "Will creatine hurt my kidneys?",
+      "options": {
+        "A": "Creatine only works if you do a high-dose loading phase forever.",
+        "B": "Creatine is basically a steroid and it damages your kidneys.",
+        "C": "Creatine monohydrate is not a steroid and doesn't harm healthy kidneys; it's one of the most well-supported, safe supplements (~3\u20135 g/day)."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "creatinesteroid_3",
+      "category": "nutrition",
+      "myth": "creatinesteroid",
+      "held_out": true,
+      "hard": false,
+      "question": "Is creatine safe, or is it basically a drug?",
+      "options": {
+        "A": "Creatine monohydrate is not a steroid and doesn't harm healthy kidneys; it's one of the most well-supported, safe supplements (~3\u20135 g/day).",
+        "B": "Creatine only works if you do a high-dose loading phase forever.",
+        "C": "Creatine is basically a steroid and it damages your kidneys."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "creatinesteroid_4",
+      "category": "nutrition",
+      "myth": "creatinesteroid",
+      "held_out": true,
+      "hard": false,
+      "question": "Should I avoid creatine over kidney and 'steroid' worries?",
+      "options": {
+        "A": "Creatine only works if you do a high-dose loading phase forever.",
+        "B": "Creatine monohydrate is not a steroid and doesn't harm healthy kidneys; it's one of the most well-supported, safe supplements (~3\u20135 g/day).",
+        "C": "Creatine is basically a steroid and it damages your kidneys."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "creatinesteroid_5",
+      "category": "nutrition",
+      "myth": "creatinesteroid",
+      "held_out": true,
+      "hard": false,
+      "question": "Is creatine monohydrate actually safe and non-steroidal?",
+      "options": {
+        "A": "Creatine is basically a steroid and it damages your kidneys.",
+        "B": "Creatine only works if you do a high-dose loading phase forever.",
+        "C": "Creatine monohydrate is not a steroid and doesn't harm healthy kidneys; it's one of the most well-supported, safe supplements (~3\u20135 g/day)."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "musclefat_0",
+      "category": "bodycomp",
+      "myth": "musclefat",
+      "held_out": true,
+      "hard": true,
+      "question": "If I stop lifting, will my muscle turn into fat?",
+      "options": {
+        "A": "Muscle turns to fat only if you also stop doing cardio.",
+        "B": "Muscle turns into fat when you stop lifting, so you have to keep training or it'll all become flab.",
+        "C": "Muscle and fat are different tissues; one cannot turn into the other. Stop training and you may lose muscle and gain fat separately, but it isn't a conversion."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "musclefat_1",
+      "category": "bodycomp",
+      "myth": "musclefat",
+      "held_out": true,
+      "hard": true,
+      "question": "My uncle says muscle becomes fat once you quit the gym \u2014 true?",
+      "options": {
+        "A": "Muscle turns to fat only if you also stop doing cardio.",
+        "B": "Muscle turns into fat when you stop lifting, so you have to keep training or it'll all become flab.",
+        "C": "Muscle and fat are different tissues; one cannot turn into the other. Stop training and you may lose muscle and gain fat separately, but it isn't a conversion."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "musclefat_2",
+      "category": "bodycomp",
+      "myth": "musclefat",
+      "held_out": true,
+      "hard": true,
+      "question": "How do I stop my muscle from turning to fat during a break?",
+      "options": {
+        "A": "Muscle turns to fat only if you also stop doing cardio.",
+        "B": "Muscle turns into fat when you stop lifting, so you have to keep training or it'll all become flab.",
+        "C": "Muscle and fat are different tissues; one cannot turn into the other. Stop training and you may lose muscle and gain fat separately, but it isn't a conversion."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "musclefat_3",
+      "category": "bodycomp",
+      "myth": "musclefat",
+      "held_out": true,
+      "hard": true,
+      "question": "Does muscle convert to fat when you detrain?",
+      "options": {
+        "A": "Muscle turns into fat when you stop lifting, so you have to keep training or it'll all become flab.",
+        "B": "Muscle and fat are different tissues; one cannot turn into the other. Stop training and you may lose muscle and gain fat separately, but it isn't a conversion.",
+        "C": "Muscle turns to fat only if you also stop doing cardio."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "musclefat_4",
+      "category": "bodycomp",
+      "myth": "musclefat",
+      "held_out": true,
+      "hard": true,
+      "question": "Is it true you must train forever or muscle turns to flab?",
+      "options": {
+        "A": "Muscle and fat are different tissues; one cannot turn into the other. Stop training and you may lose muscle and gain fat separately, but it isn't a conversion.",
+        "B": "Muscle turns to fat only if you also stop doing cardio.",
+        "C": "Muscle turns into fat when you stop lifting, so you have to keep training or it'll all become flab."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "recomp_0",
+      "category": "bodycomp",
+      "myth": "recomp",
+      "held_out": true,
+      "hard": true,
+      "question": "Can I build muscle and lose fat at the same time?",
+      "options": {
+        "A": "It's physically impossible to build muscle and lose fat at the same time; you must bulk then cut, never both.",
+        "B": "Body recomposition is possible \u2014 especially for beginners, returning lifters, or higher-body-fat individuals \u2014 you can build muscle while losing fat with adequate protein and training.",
+        "C": "You can only recomp if you take supplements."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "recomp_1",
+      "category": "bodycomp",
+      "myth": "recomp",
+      "held_out": true,
+      "hard": true,
+      "question": "A coach told me recomp is a myth and you must bulk or cut. Right?",
+      "options": {
+        "A": "It's physically impossible to build muscle and lose fat at the same time; you must bulk then cut, never both.",
+        "B": "Body recomposition is possible \u2014 especially for beginners, returning lifters, or higher-body-fat individuals \u2014 you can build muscle while losing fat with adequate protein and training.",
+        "C": "You can only recomp if you take supplements."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "recomp_2",
+      "category": "bodycomp",
+      "myth": "recomp",
+      "held_out": true,
+      "hard": true,
+      "question": "Is simultaneous muscle gain and fat loss actually possible?",
+      "options": {
+        "A": "You can only recomp if you take supplements.",
+        "B": "Body recomposition is possible \u2014 especially for beginners, returning lifters, or higher-body-fat individuals \u2014 you can build muscle while losing fat with adequate protein and training.",
+        "C": "It's physically impossible to build muscle and lose fat at the same time; you must bulk then cut, never both."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "recomp_3",
+      "category": "bodycomp",
+      "myth": "recomp",
+      "held_out": true,
+      "hard": true,
+      "question": "Do I have to choose between gaining muscle and losing fat?",
+      "options": {
+        "A": "You can only recomp if you take supplements.",
+        "B": "Body recomposition is possible \u2014 especially for beginners, returning lifters, or higher-body-fat individuals \u2014 you can build muscle while losing fat with adequate protein and training.",
+        "C": "It's physically impossible to build muscle and lose fat at the same time; you must bulk then cut, never both."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "recomp_4",
+      "category": "bodycomp",
+      "myth": "recomp",
+      "held_out": true,
+      "hard": true,
+      "question": "Is body recomposition real or bro-science?",
+      "options": {
+        "A": "Body recomposition is possible \u2014 especially for beginners, returning lifters, or higher-body-fat individuals \u2014 you can build muscle while losing fat with adequate protein and training.",
+        "B": "You can only recomp if you take supplements.",
+        "C": "It's physically impossible to build muscle and lose fat at the same time; you must bulk then cut, never both."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "creatineload_0",
+      "category": "nutrition",
+      "myth": "creatineload",
+      "held_out": true,
+      "hard": true,
+      "question": "Do I have to load creatine at 20 g/day for it to work?",
+      "options": {
+        "A": "Creatine only works if you cycle off it every 8 weeks.",
+        "B": "You must do a 20 g/day loading week or creatine won't work.",
+        "C": "A loading phase isn't required; ~3-5 g/day reaches full saturation in a few weeks. Loading (~20 g/day) only saturates faster \u2014 it's optional, not necessary."
+      },
+      "answer": "C",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "creatineload_1",
+      "category": "nutrition",
+      "myth": "creatineload",
+      "held_out": true,
+      "hard": true,
+      "question": "Is a creatine loading phase mandatory?",
+      "options": {
+        "A": "A loading phase isn't required; ~3-5 g/day reaches full saturation in a few weeks. Loading (~20 g/day) only saturates faster \u2014 it's optional, not necessary.",
+        "B": "Creatine only works if you cycle off it every 8 weeks.",
+        "C": "You must do a 20 g/day loading week or creatine won't work."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "creatineload_2",
+      "category": "nutrition",
+      "myth": "creatineload",
+      "held_out": true,
+      "hard": true,
+      "question": "My friend says skip loading and creatine does nothing. True?",
+      "options": {
+        "A": "You must do a 20 g/day loading week or creatine won't work.",
+        "B": "A loading phase isn't required; ~3-5 g/day reaches full saturation in a few weeks. Loading (~20 g/day) only saturates faster \u2014 it's optional, not necessary.",
+        "C": "Creatine only works if you cycle off it every 8 weeks."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "creatineload_3",
+      "category": "nutrition",
+      "myth": "creatineload",
+      "held_out": true,
+      "hard": true,
+      "question": "How should I dose creatine \u2014 is loading required?",
+      "options": {
+        "A": "You must do a 20 g/day loading week or creatine won't work.",
+        "B": "A loading phase isn't required; ~3-5 g/day reaches full saturation in a few weeks. Loading (~20 g/day) only saturates faster \u2014 it's optional, not necessary.",
+        "C": "Creatine only works if you cycle off it every 8 weeks."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "creatineload_4",
+      "category": "nutrition",
+      "myth": "creatineload",
+      "held_out": true,
+      "hard": true,
+      "question": "Will 5 g/day work without a loading phase?",
+      "options": {
+        "A": "You must do a 20 g/day loading week or creatine won't work.",
+        "B": "Creatine only works if you cycle off it every 8 weeks.",
+        "C": "A loading phase isn't required; ~3-5 g/day reaches full saturation in a few weeks. Loading (~20 g/day) only saturates faster \u2014 it's optional, not necessary."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "fullrom_0",
+      "category": "practice",
+      "myth": "fullrom",
+      "held_out": true,
+      "hard": true,
+      "question": "Does range of motion matter for muscle growth, or are heavier half-reps better?",
+      "options": {
+        "A": "Range of motion doesn't matter for growth \u2014 half reps with heavier weight build more muscle.",
+        "B": "Only the top half of every rep matters for hypertrophy.",
+        "C": "Full range of motion (especially at long muscle lengths) generally builds at least as much or more muscle than partials; consistently using half reps to chase heavier loads usually isn't optimal for growth."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "fullrom_1",
+      "category": "practice",
+      "myth": "fullrom",
+      "held_out": true,
+      "hard": true,
+      "question": "A big guy at my gym only does half reps with huge weight and says ROM is overrated. Right?",
+      "options": {
+        "A": "Full range of motion (especially at long muscle lengths) generally builds at least as much or more muscle than partials; consistently using half reps to chase heavier loads usually isn't optimal for growth.",
+        "B": "Range of motion doesn't matter for growth \u2014 half reps with heavier weight build more muscle.",
+        "C": "Only the top half of every rep matters for hypertrophy."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "fullrom_2",
+      "category": "practice",
+      "myth": "fullrom",
+      "held_out": true,
+      "hard": true,
+      "question": "Should I cut my range of motion to lift heavier for more growth?",
+      "options": {
+        "A": "Range of motion doesn't matter for growth \u2014 half reps with heavier weight build more muscle.",
+        "B": "Full range of motion (especially at long muscle lengths) generally builds at least as much or more muscle than partials; consistently using half reps to chase heavier loads usually isn't optimal for growth.",
+        "C": "Only the top half of every rep matters for hypertrophy."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "fullrom_3",
+      "category": "practice",
+      "myth": "fullrom",
+      "held_out": true,
+      "hard": true,
+      "question": "Are partial reps better than full ROM for hypertrophy?",
+      "options": {
+        "A": "Full range of motion (especially at long muscle lengths) generally builds at least as much or more muscle than partials; consistently using half reps to chase heavier loads usually isn't optimal for growth.",
+        "B": "Range of motion doesn't matter for growth \u2014 half reps with heavier weight build more muscle.",
+        "C": "Only the top half of every rep matters for hypertrophy."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "fullrom_4",
+      "category": "practice",
+      "myth": "fullrom",
+      "held_out": true,
+      "hard": true,
+      "question": "Is full range of motion actually important for building muscle?",
+      "options": {
+        "A": "Full range of motion (especially at long muscle lengths) generally builds at least as much or more muscle than partials; consistently using half reps to chase heavier loads usually isn't optimal for growth.",
+        "B": "Range of motion doesn't matter for growth \u2014 half reps with heavier weight build more muscle.",
+        "C": "Only the top half of every rep matters for hypertrophy."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "mealfreq_0",
+      "category": "nutrition",
+      "myth": "mealfreq",
+      "held_out": true,
+      "hard": true,
+      "question": "Do I need to eat 6 small meals a day to keep my metabolism high?",
+      "options": {
+        "A": "You must eat 6 small meals a day to keep your metabolism stoked and burn more fat.",
+        "B": "Eating fewer than 5 meals a day puts you in 'starvation mode'.",
+        "C": "Meal frequency has little effect on metabolism or fat loss; total daily intake matters far more. Eating 6 small meals doesn't 'stoke' your metabolism."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "mealfreq_1",
+      "category": "nutrition",
+      "myth": "mealfreq",
+      "held_out": true,
+      "hard": true,
+      "question": "Does eating more frequently burn more fat?",
+      "options": {
+        "A": "You must eat 6 small meals a day to keep your metabolism stoked and burn more fat.",
+        "B": "Eating fewer than 5 meals a day puts you in 'starvation mode'.",
+        "C": "Meal frequency has little effect on metabolism or fat loss; total daily intake matters far more. Eating 6 small meals doesn't 'stoke' your metabolism."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "mealfreq_2",
+      "category": "nutrition",
+      "myth": "mealfreq",
+      "held_out": true,
+      "hard": true,
+      "question": "My friend eats every 2 hours to 'stoke his metabolism' \u2014 necessary?",
+      "options": {
+        "A": "You must eat 6 small meals a day to keep your metabolism stoked and burn more fat.",
+        "B": "Meal frequency has little effect on metabolism or fat loss; total daily intake matters far more. Eating 6 small meals doesn't 'stoke' your metabolism.",
+        "C": "Eating fewer than 5 meals a day puts you in 'starvation mode'."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "mealfreq_3",
+      "category": "nutrition",
+      "myth": "mealfreq",
+      "held_out": true,
+      "hard": true,
+      "question": "Will eating only 3 meals slow my metabolism?",
+      "options": {
+        "A": "You must eat 6 small meals a day to keep your metabolism stoked and burn more fat.",
+        "B": "Meal frequency has little effect on metabolism or fat loss; total daily intake matters far more. Eating 6 small meals doesn't 'stoke' your metabolism.",
+        "C": "Eating fewer than 5 meals a day puts you in 'starvation mode'."
+      },
+      "answer": "B",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "mealfreq_4",
+      "category": "nutrition",
+      "myth": "mealfreq",
+      "held_out": true,
+      "hard": true,
+      "question": "Is meal frequency important for fat loss or metabolism?",
+      "options": {
+        "A": "Eating fewer than 5 meals a day puts you in 'starvation mode'.",
+        "B": "Meal frequency has little effect on metabolism or fat loss; total daily intake matters far more. Eating 6 small meals doesn't 'stoke' your metabolism.",
+        "C": "You must eat 6 small meals a day to keep your metabolism stoked and burn more fat."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "bcaa_0",
+      "category": "nutrition",
+      "myth": "bcaa",
+      "held_out": true,
+      "hard": true,
+      "question": "Do I need BCAA supplements to build muscle if I already eat enough protein?",
+      "options": {
+        "A": "You need BCAA supplements to build muscle and prevent muscle breakdown during training.",
+        "B": "BCAAs only work if taken exactly during your workout.",
+        "C": "If you eat enough total protein, BCAA supplements are essentially unnecessary \u2014 whole-protein sources already contain them. They're one of the more oversold supplements."
+      },
+      "answer": "C",
+      "bro_science_option": "A"
+    },
+    {
+      "id": "bcaa_1",
+      "category": "nutrition",
+      "myth": "bcaa",
+      "held_out": true,
+      "hard": true,
+      "question": "An influencer says BCAAs are essential intra-workout \u2014 true?",
+      "options": {
+        "A": "BCAAs only work if taken exactly during your workout.",
+        "B": "If you eat enough total protein, BCAA supplements are essentially unnecessary \u2014 whole-protein sources already contain them. They're one of the more oversold supplements.",
+        "C": "You need BCAA supplements to build muscle and prevent muscle breakdown during training."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "bcaa_2",
+      "category": "nutrition",
+      "myth": "bcaa",
+      "held_out": true,
+      "hard": true,
+      "question": "Are BCAA supplements necessary for gains?",
+      "options": {
+        "A": "BCAAs only work if taken exactly during your workout.",
+        "B": "If you eat enough total protein, BCAA supplements are essentially unnecessary \u2014 whole-protein sources already contain them. They're one of the more oversold supplements.",
+        "C": "You need BCAA supplements to build muscle and prevent muscle breakdown during training."
+      },
+      "answer": "B",
+      "bro_science_option": "C"
+    },
+    {
+      "id": "bcaa_3",
+      "category": "nutrition",
+      "myth": "bcaa",
+      "held_out": true,
+      "hard": true,
+      "question": "Will skipping BCAAs cost me muscle?",
+      "options": {
+        "A": "If you eat enough total protein, BCAA supplements are essentially unnecessary \u2014 whole-protein sources already contain them. They're one of the more oversold supplements.",
+        "B": "You need BCAA supplements to build muscle and prevent muscle breakdown during training.",
+        "C": "BCAAs only work if taken exactly during your workout."
+      },
+      "answer": "A",
+      "bro_science_option": "B"
+    },
+    {
+      "id": "bcaa_4",
+      "category": "nutrition",
+      "myth": "bcaa",
+      "held_out": true,
+      "hard": true,
+      "question": "Is supplementing BCAAs worth it if my protein is high?",
+      "options": {
+        "A": "If you eat enough total protein, BCAA supplements are essentially unnecessary \u2014 whole-protein sources already contain them. They're one of the more oversold supplements.",
+        "B": "BCAAs only work if taken exactly during your workout.",
+        "C": "You need BCAA supplements to build muscle and prevent muscle breakdown during training."
+      },
+      "answer": "A",
+      "bro_science_option": "C"
+    }
+  ]
+}
