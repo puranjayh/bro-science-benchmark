@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use BroScienceBench, please cite it."
+title: "BroScienceBench: Evaluating Large Language Models on Strength-Training Misinformation"
+abstract: >-
+  A 246-item benchmark of 42 strength-training myth clusters across 7 categories,
+  with held-out, hard, and calibration splits, evaluated under an open-ended
+  protocol graded by a validated neutral LLM judge.
+authors:
+  - family-names: "TODO"
+    given-names: "TODO"
+version: "1.1.0"
+date-released: "2026-07-01"
+license: CC-BY-4.0
+url: "TODO: repository URL"
+keywords:
+  - large language models
+  - benchmark
+  - evaluation
+  - misinformation
+  - health

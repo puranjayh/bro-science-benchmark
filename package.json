@@ -1,0 +1,15 @@
+{
+  "name": "bro-science-benchmark",
+  "version": "1.1.0",
+  "description": "A 246-item benchmark for evaluating LLMs on strength-training misinformation.",
+  "license": "CC-BY-4.0",
+  "type": "module",
+  "scripts": {
+    "eval": "tsx scripts/runBench.ts --mode open",
+    "eval:mcq": "tsx scripts/runBench.ts --mode mcq",
+    "judge:sheet": "tsx scripts/gen_judge_validation.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.0"
+  }
+}

@@ -1,0 +1,6 @@
+# The analysis scripts (analyze_stats.py, judge_kappa.py, enrich_validation.py,
+# validate.py) use only the Python standard library.
+#
+# The following are required ONLY for the McNemar heatmap (scripts/fig2_mcnemar.py):
+matplotlib
+numpy

@@ -169,7 +169,7 @@ async function main() {
   const benchFile = arg('--bench') ?? 'broscience_bench_v1.1.json'
   const single = arg('--model')
 
-  const bench = JSON.parse(readFileSync(join(HERE, '..', '..', 'research', benchFile), 'utf8'))
+  const bench = JSON.parse(readFileSync(join(HERE, '..', 'data', benchFile), 'utf8'))
   let items: Item[] = bench.items
   if (split === 'held_out') items = items.filter((i) => i.held_out)
   else if (split === 'hard') items = items.filter((i) => i.hard)
@@ -180,15 +180,15 @@ async function main() {
     ? { [single]: MODELS[single] ?? { label: single, via: single.includes('/') ? 'openrouter' : 'groq' } }
     : MODELS
 
-  console.log(`Paper 2 | bench=${benchFile} | mode=${mode} | split=${split ?? 'all'} | items=${items.length} | models=${Object.keys(toRun).length}`)
+  console.log(`BroScienceBench | bench=${benchFile} | mode=${mode} | split=${split ?? 'all'} | items=${items.length} | models=${Object.keys(toRun).length}`)
   const all: ModelResults[] = []
   for (const [slug, meta] of Object.entries(toRun)) all.push(await evalModel(slug, meta as any, items, mode))
 
   printSummary(all)
   const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19)
-  const outFile = join(HERE, '..', '..', 'research', `results_paper2_${mode}_${ts}.json`)
+  const outFile = join(HERE, '..', 'results', `results_${mode}_${ts}.json`)
   writeFileSync(outFile, JSON.stringify({ bench: benchFile, mode, split: split ?? 'all', n_items: items.length, timestamp: new Date().toISOString(), models: all }, null, 2))
-  console.log(`\nSaved → research/results_paper2_${mode}_${ts}.json`)
+  console.log(`\nSaved → results/results_${mode}_${ts}.json`)
 }
 
 main().catch((e) => { console.error(e); process.exit(1) })

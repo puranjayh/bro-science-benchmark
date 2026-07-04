@@ -10,7 +10,7 @@ Reports raw agreement + Cohen's kappa. kappa > 0.6 substantial, > 0.8 strong.
 import csv, pathlib
 from collections import Counter
 
-p = pathlib.Path(__file__).parent / "judge_validation.csv"
+p = pathlib.Path(__file__).parent.parent / "results" / "judge_validation.csv"
 rows = [r for r in csv.DictReader(open(p)) if r.get("human_label", "").strip()]
 if not rows:
     print("Fill in the human_label column in research/judge_validation.csv first.")

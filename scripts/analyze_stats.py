@@ -41,7 +41,7 @@ def rate(k, n):
 def main():
     arg = sys.argv[1] if len(sys.argv) > 1 else None
     if not arg:
-        files = sorted(glob.glob(str(pathlib.Path(__file__).parent / "results_paper2_*.json")))
+        files = sorted(glob.glob(str(pathlib.Path(__file__).parent.parent / "results" / "results_*.json")))
         if not files:
             print("No results_paper2_*.json found — run runBench_paper2.ts first.")
             return

@@ -11,11 +11,11 @@ Then label `human_label` by comparing the `answer` column to `correct_view` vs `
 import csv, json, pathlib
 
 here = pathlib.Path(__file__).parent
-bench = json.load(open(here / "broscience_bench_v1.1.json"))
+bench = json.load(open(here.parent / "data" / "broscience_bench_v1.1.json"))
 key = {it["id"]: (it["options"][it["answer"]], it["options"][it["bro_science_option"]])
        for it in bench["items"]}
 
-p = here / "judge_validation.csv"
+p = here.parent / "results" / "judge_validation.csv"
 try:
     rows = list(csv.DictReader(open(p)))
 except FileNotFoundError:

@@ -57,7 +57,7 @@ async function main() {
   // especially Gemini's hedgy answers, the labels we most doubt. --model forces one.
   const single = arg('--model')
   const MIX = ['google/gemini-3.5-flash', 'meta-llama/llama-3.1-8b-instruct', 'anthropic/claude-haiku-4.5', 'anthropic/claude-sonnet-4.6']
-  const bench = JSON.parse(readFileSync(join(HERE, '..', '..', 'research', 'broscience_bench_v1.1.json'), 'utf8'))
+  const bench = JSON.parse(readFileSync(join(HERE, '..', 'data', 'broscience_bench_v1.1.json'), 'utf8'))
 
   // stratified sample: spread across categories
   const byCat: Record<string, any[]> = {}
@@ -82,7 +82,7 @@ async function main() {
     console.log(`  ${it.id.padEnd(20)} ${model.split('/')[1].padEnd(24)} -> ${lab}`)
     await sleep(120)
   }
-  const p = join(HERE, '..', '..', 'research', 'judge_validation.csv')
+  const p = join(HERE, '..', 'results', 'judge_validation.csv')
   writeFileSync(p, out.join('\n'))
   console.log(`\nWrote ${sample.length} rows -> research/judge_validation.csv`)
   console.log('Now fill in the human_label column, then: python3 research/judge_kappa.py')
