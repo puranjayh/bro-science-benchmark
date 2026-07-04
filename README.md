@@ -1,7 +1,7 @@
 # BroScienceBench
 
 A 246-item benchmark for evaluating large language models on strength-training
-misinformation — "bro-science": confident, popular, but evidence-contradicting
+misinformation - "bro-science": confident, popular, but evidence-contradicting
 training and nutrition claims.
 
 Each item pairs an evidence-based answer with a common gym myth. Models are
@@ -120,7 +120,7 @@ python3 scripts/judge_kappa.py
 ```bibtex
 @misc{brosciencebench2026,
   title  = {BroScienceBench: Evaluating Large Language Models on Strength-Training Misinformation},
-  author = {TODO},
+  author = {Puranjay Haldankar},
   year   = {2026},
   note   = {TODO: arXiv / DOI}
 }
