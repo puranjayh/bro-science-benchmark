@@ -6,12 +6,12 @@ abstract: >-
   with held-out, hard, and calibration splits, evaluated under an open-ended
   protocol graded by a validated neutral LLM judge.
 authors:
-  - family-names: "TODO"
-    given-names: "TODO"
+  - family-names: "Haldankar"
+    given-names: "Puranjay"
 version: "1.1.0"
 date-released: "2026-07-01"
 license: CC-BY-4.0
-url: "TODO: repository URL"
+url: "https://github.com/puranjayh/bro-science-benchmark/edit/main/CITATION.cff"
 keywords:
   - large language models
   - benchmark
