@@ -10,7 +10,7 @@ Following *Datasheets for Datasets* (Gebru et al., 2021).
 - **Instances:** 246 multiple-choice items across 42 myth clusters and 7 categories (mechanism, practice, body composition, nutrition, safety, recovery, calibration).
 - **Each item:** a question (incl. adversarial / first-person / leading phrasings), 3 options (one evidence-based `answer`, one `bro_science_option`, one plausible distractor), and flags `held_out` (myth not named in the source system's guardrails — tests generalization) and `hard`.
 - **Splits:** 156 held-out, 72 hard; calibration items (the answer is *"not settled"* — tests overclaiming).
-- **Labels source:** author-defined, grounded in the exercise-science literature (`citations.md`, `myth_evidence`). **Inter-rater reliability: [TODO — report Cohen's κ from a 2nd rater].**
+- **Labels source:** author-defined, grounded in the exercise-science literature (`citations.md`, `myth_evidence`). **Inter-rater reliability: In-progress
 - **No personal/sensitive data.**
 
 ## Collection / construction
