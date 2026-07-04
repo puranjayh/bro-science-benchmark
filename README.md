@@ -122,7 +122,7 @@ python3 scripts/judge_kappa.py
   title  = {BroScienceBench: Evaluating Large Language Models on Strength-Training Misinformation},
   author = {Puranjay Haldankar},
   year   = {2026},
-  note   = {TODO: arXiv / DOI}
+  note   = {In-submission}
 }
 ```
 
