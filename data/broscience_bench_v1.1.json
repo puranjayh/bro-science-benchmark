@@ -3751,5 +3751,5 @@
     "volume": "Higher volume generally drives more growth up to a point, but the upper end of the dose-response is contested with diminishing returns; not a 'more is always better' law.",
     "womenbulky": "Most women's hormonal profile makes rapid large hypertrophy unlikely; resistance training builds strength and a lean, muscular physique, not quick bulk."
   },
-  "evidence_note": "One-line evidence summary per myth cluster (datacard). TODO before submission: attach 1-2 citations to each."
+  "evidence_note": "One-line evidence summary per myth cluster; supporting citations are in scripts/citations.md."
 }

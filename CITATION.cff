@@ -11,7 +11,7 @@ authors:
 version: "1.1.0"
 date-released: "2026-07-01"
 license: CC-BY-4.0
-url: "https://github.com/puranjayh/bro-science-benchmark/edit/main/CITATION.cff"
+url: "https://github.com/puranjayh/bro-science-benchmark"
 keywords:
   - large language models
   - benchmark
