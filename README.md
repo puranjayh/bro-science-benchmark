@@ -110,10 +110,6 @@ python3 scripts/enrich_validation.py      # adds the reference answer key
 python3 scripts/judge_kappa.py
 ```
 
-> Note on paths: these scripts were extracted from a larger project. Before
-> running, confirm the data/results directory constants near the top of
-> `runBench.ts`, `analyze_stats.py`, and `judge_kappa.py` point at `./data` and
-> `./results`.
 
 ## Citing
 
