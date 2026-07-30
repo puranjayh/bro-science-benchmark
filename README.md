@@ -62,6 +62,17 @@ Item schema:
 The file also carries a `myth_evidence` map with a one-line evidence summary per
 cluster. Supporting literature is listed in `scripts/citations.md`.
 
+### Load from Hugging Face
+
+A flat, one-item-per-line copy (`data/brosciencebench.jsonl`, evidence summary
+attached, `held_out`/`hard` as boolean columns) is published as a Hugging Face
+dataset:
+
+```python
+from datasets import load_dataset
+ds = load_dataset("pur4nj41y/bro-science-benchmark", split="test")
+```
+
 ## Layout
 
 ```
